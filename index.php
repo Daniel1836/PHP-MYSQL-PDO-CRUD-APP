@@ -1,5 +1,9 @@
+<!DOCTYPE html>
+<html>
+   <body> 
+
  <?php 
- require 'Process.php';
+ require 'ProcessPDO.php';
  ?>
 
  <?php if (isset($_SESSION['message'])): ?>
@@ -17,8 +21,6 @@
      
        <form action="Process.php" method="POST">
        <input type="hidden" name="id" value="<?php echo $id;?>">
-       <label>ID</label>
-           <input type="text" name="id" value="<?php echo $id;?>" placeholder="Enter ID">
        <label>Video Title</label>
            <input type="text" name="name" value="<?php echo $name;?>" placeholder="Enter Video Title">
        <label>Video Genre</label>
@@ -46,12 +48,14 @@
     <?php foreach($info as $data): ?>
     <tr>
    <td> <?= $data[0]; ?></td>
-   <td> <?= $data[2]; ?></td>
    <td> <?= $data[1]; ?></td>
+   <td> <?= $data[2]; ?></td>
    <td>
-          <a href='Assignment4PDO.php?edit=<?=$data[0]?>' class='btn btn-info'>Edit</a>
-          <a href='ProcessPDO.php?delete=<?= $data[0]?>' class='btn btn-danger'>Delete</a>
+          <a href='index.php?edit=<?=$data[0]?>' class='btn btn-info'>Edit</a>
+          <a href='Process.php?delete=<?= $data[0]?>' class='btn btn-danger'>Delete</a>
    </td>
 </tr>
   
     <?php endforeach; ?>
+   </body>
+</html>
