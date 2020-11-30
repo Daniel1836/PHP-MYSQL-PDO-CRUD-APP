@@ -13,7 +13,7 @@ if (isset($_POST['save']))
 $sql='insert into crud4(name, location)values(?, ?);';
 $stmt=$pdo->prepare($sql);
 $stmt->execute(array($name, $location));
-header("location: Assignment4PDO.php");
+header("location: index.php");
 }
 
 //Delete
@@ -23,7 +23,7 @@ $id = $_GET['delete'];
 $sql = 'DElETE FROM crud4 WHERE id = ?';
 $stmt=$pdo->prepare($sql);
 $stmt->execute([$id]);
-header("location: Assignment4PDO.php");
+header("location: index.php");
 }
 
 //Read
@@ -55,15 +55,11 @@ if (isset($_GET['edit']))
 //Update
  if (isset($_POST['update']))
  {
-         $id = $_POST['id'];
         $name = $_POST['name'];
         $location = $_POST['location'];
-         // $sql= "UPDATE crud4 SET name=?, location=? WHERE id=?";
-        //$stmt=$pdo->prepare($sql);
-   //$stmt->execute([$name, $location]);
-       $sql= 'UPDATE crud4 SET name=:name,location=:location WHERE id=:id';
+        $sql= 'UPDATE crud4 SET name=:name,location=:location WHERE id=:id';
         $stmt=$pdo->prepare($sql);
         $stmt->execute([':id'=> $id,':name'=> $name,':location'=> $location]);
-        header("location: Assignment4PDO.php");     
+        header("location: index.php");     
  }
 ?>
